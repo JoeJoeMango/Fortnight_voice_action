@@ -20,6 +20,7 @@ $(function(){
       success: function(data){
         data = JSON.parse(data);
         displayData(data);
+        console.log("data: " + data.stats.p2.top1.value);
       }
     });
     resetResult();
@@ -40,7 +41,7 @@ $(function(){
                   '<li class="list-group-item">' + 'duos: ' + data.stats.p10.top1.value + '</li>' +
                   '<li class="list-group-item">' + 'Teams: ' + data.stats.p9.top1.value + '</li>' +
               '</ul>';
-              console.log(data.stats.p2.top1.value);
+              // console.log(data.stats.p2.top1.value);
     var template = '<div class="card">' +
                         '<h5 class="card-header">' + epicUserHandel + '</h5>' +
                         '<div class="card-body">' +

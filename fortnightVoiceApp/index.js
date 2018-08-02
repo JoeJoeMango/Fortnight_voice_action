@@ -19,42 +19,23 @@ var uri = 'https://api.fortnitetracker.com/v1/profile/';
 //TRN-Api-Key: 0bfa97b1-d015-481e-8736-48d3fea8cb36
 
 app.post('/', function(req,res){
-      var data = {};
   console.log(req.body);
   request.get(uri + req.body.dropDownValue + '/' + req.body.epicNickName, {
     headers : {
       'TRN-Api-Key': '0bfa97b1-d015-481e-8736-48d3fea8cb36'
-    }}, function(error, responce,body){
+    }}, function(error, responce, body){
       // console.log(responce);
       // console.log(res);
       // console.log(res.json(body.stats));
       res.json(body);
+      // console.log(body);
+      body = JSON.parse(body);
+      console.log("Solo wins:  " + body.stats.p2.top1.value);
 
-      // data.epicNickName = epicNickName.val().toLowerCase();
-      // data.dropDownValue = dropDownValue.toLowerCase();
-
-      $.ajax({
-        type: "POST",
-        url: '/',
-        dataType: 'json',
-        data: data,
-        success: function(data){
-          data = JSON.parse(data);
-          displayData(data);
-          console.log(displayData(data));
-        }
-      });
   });
 });
 
-
-function displayData(data){
-  var epicUserHandel = data.epicUserHandle;
-            console.log(data.stats.p2.top1.value);
-}
-
-// var port = process.env.PORT || 3000;
-// app.listen(port);
-app.listen(3003, () => {
-  console.log("listening on port 3003");
+var port = 3003;
+app.listen(port, () => {
+  console.log("listening on port:  "  + port);
 });

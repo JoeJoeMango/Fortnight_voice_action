@@ -1,9 +1,12 @@
 $(function(){
   var submitBtn = $('#submit');
-  var platfromDropdownBtn = $('#platform a');
-  var epicNickName = $('#epicNickName');
-  var results = $('#results');
 
+  var platfromDropdownBtn = $('#platform a');
+
+  var epicNickName = $('#epicNickName');
+
+  var results = $('#results');
+  var values = [];
   //defult values
   var dropDownValue = 'pc';
 
@@ -19,19 +22,23 @@ $(function(){
       data: data,
       success: function(data){
         data = JSON.parse(data);
+        // console.log(data);
         displayData(data);
-        console.log("data: " + data.stats.p2.top1.value);
+
+
       }
     });
     resetResult();
   });
   platfromDropdownBtn.click(function(){
+    // dropDownValue = $(this).text();
     dropDownValue = $(this).text();
   });
 
   function resetResult(){
     results.html('');
     epicNickName.val('');
+    // epicNickName_.val('');
 
   }
   function displayData(data){
